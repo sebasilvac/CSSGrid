@@ -1,0 +1,66 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: white;
+}
+main {
+    width: 100vw;
+    height: 100vh;
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(150px, 1fr));
+    
+    /*
+        gestionamos las filas fuera de los limites
+        es decir, las filas que eran implicitas.
+        con esto acordamos las medidas para esos elementos
+    */
+    grid-auto-rows: minmax(150px, 1fr);
+
+    /*
+        por defecto está en row (crea filas para los elementos)
+        si ponemos columns, creará columnas.
+        Luego indicamos los limites para el resto de las columnas 
+    */
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(150px, 1fr);
+    
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: goldenrod;
+    border: 1px solid black;
+}
+
+/* Packing Modes  */
+
+/*
+    sin el dense
+    habrían espacios en blanco, sin utilizar
+*/
+main {
+    grid-auto-flow: column dense;
+}
+
+section:nth-child(3n){
+    background-color: purple;
+    grid-column-end: span 2;
+}
+
+section:nth-child(7n){
+    background-color: cyan;
+    grid-row-end: span 2;
+}
+
+section:nth-child(12n){
+    background-color: aquamarine;
+    grid-column-end: span 3;
+    grid-row-end: span 3;
+}
+

@@ -1,0 +1,34 @@
+main {
+    display: grid;
+    font-family: sans-serif;
+    grid-gap: 10px;
+    height: 100vh;
+
+    /*
+        se ocupa una sintaxis como bootstrap de ejemplo, 
+        pero se puede nombrar como se quiera
+        pero como standar ocupando las palabras end y start
+    */
+    grid-template-columns: 
+        [start]
+        repeat(4,
+            /* se crea un patrón */
+            [col-lg-start] minmax(80px, 1fr)
+            [col-lg-end col-md-start] minmax(40px, 1fr)
+            [col-md-end col-sm-start] minmax(20px, 1fr)
+        );
+}
+
+div {
+    align-items: center;
+    background-color: goldenrod;
+    display: flex;
+    justify-content: center;
+}
+
+div:first-of-type {
+    background-color: purple;
+    color: white;
+    /* grid-column: col-lg-start / col-md-end; */
+    grid-column: col-lg-start / end;
+}
